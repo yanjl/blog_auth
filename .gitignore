@@ -5,5 +5,5 @@
 *.egg-info
 
 #setting
-setting.py
+auths/setting.py
 db.sqlite3
