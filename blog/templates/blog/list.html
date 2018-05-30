@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %} {%block title%}List{%endblock title%} {% block header %}
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>{{user|title}}'s Posts</h1>
+                    <p class="post-meta">Total of {{total}} Posts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock header %}
+<!-- Main Content -->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for post in posts %}
+            <div class="post-preview">
+                <a href="{% url 'blog:detail' post.id %}">
+                    <h2 class="post-title">
+                        {{post.title}}
+                    </h2>
+                </a>
+                <p class="post-meta">Posted on {{post.publish}}</p>
+            </div>
+            <hr> {%empty%}
+            <p>Sorry, has no posts.</p>
+            {% endfor %} {%if is_paginated %}
+            <div class="float-right">
+                <ul class="pagination">
+
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number}}">上一页</a>
+                    </li>
+                    {% endif %} {%for c in paginator.page_range %} {%if c == page_obj.number %}
+                    <li class="page-item active">
+                        <a class="page-link" href="?page={{c}}">{{c}}</a>
+                    </li>
+                    {%else%}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{c}}">{{c}}</a>
+                    </li>
+                    {%endif%} {%endfor%} {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">下一页</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+
+            </div>
+            {%endif%}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

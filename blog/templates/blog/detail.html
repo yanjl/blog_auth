@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %} {%block title%}Post{%endblock title%}
+
+<!-- Page Header -->
+{% block header%}
+<header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>{{post.title}}</h1>
+
+          <span class="meta">Posted on {{post.publish}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock header %}
+<!-- Post Content -->
+{% block content %}
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p>{{post.body}}</p>
+
+
+      </div>
+    </div>
+  </div>
+</article>
+
+{% endblock content %}
