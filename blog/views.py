@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
-
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
 
 from .forms import RegisterModelForm
