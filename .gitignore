@@ -1,8 +1,10 @@
 #python
 *.py[cod]
-*.egg
 *.so
+*.egg
 *.egg-info
+dist
+build
 
 #setting
 auths/settings.py
