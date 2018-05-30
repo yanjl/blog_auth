@@ -1,9 +1,11 @@
 #python
 *.py[cod]
-*.egg
 *.so
+*.egg
 *.egg-info
+dist
+build
 
 #setting
-setting.py
+auths/settings.py
 db.sqlite3
