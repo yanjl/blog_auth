@@ -18,5 +18,6 @@ class BlogAdmin(admin.ModelAdmin):
 
 admin.site.site_header = '博客管理系统'
 admin.site.site_title = '博客管理系统'
+admin.site.site_url = '/blog/index/'
 
 admin.site.register(Blog, BlogAdmin)
