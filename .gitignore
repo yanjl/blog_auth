@@ -7,5 +7,5 @@ dist
 build
 
 #setting
-auths/settings.py
-db.sqlite3
+#auths/settings.py
+#db.sqlite3
