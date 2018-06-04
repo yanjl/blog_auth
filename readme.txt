@@ -33,3 +33,28 @@ pip install wfastcgi
      ALLOWED_HOSTS = ['*']
 7.   设置网站文件夹IIS用户访问权限。
 8.   启动网站
+
+
+
+Sqlite3 数据库向MySQL迁移
+1.在MYSQL建立空的数据库,mysite,  CREATE DATABASE mysite CHARACTER SET utf8 COLLATE utf8_general_ci; 
+2.先建立一个SLAVE数据库
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "dev.db",        
+    },
+    "slave": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "mysite",
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "",
+        "PORT": "",
+    },
+}
+
+3.python manage.py makemigrations & migrate
+4.将SQLITE主库的数据导出   python manage.py dumpdata > mysite_all_data.json
+5.切换主库和从库的setting.py设置，将MYSQL设置为主库，导入数据。
+python manage.py loaddata mysite_all_data.json
