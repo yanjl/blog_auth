@@ -62,3 +62,24 @@ DATABASES = {
 5.切换主库和从库的setting.py设置，将MYSQL设置为主库，导入数据。
 python manage.py loaddata mysite_all_data.json
 
+
+===========================
+setting.py
+
+DEBUG = False
+ALLOWED_HOSTS = ['202.192.XXX.XXX'] #服务器本机ip
+
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
+
+# LOGIN_URL = '/blog/login/'
+LOGIN_URL = '/admin/login/'
+LOGIN_REDIRECT_URL = '/blog/list/'
+
+SESSION_COOKIE_AGE = 60 * 30  # 30分钟
+# SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # 关闭浏览器，则COOKIE失效
