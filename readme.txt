@@ -2,6 +2,7 @@ Server2008 R2 sp1
 IIS7.0 
 pip install Django
 pip install wfastcgi
+pip install mysqlclient
 
 1.  IIS，“添加角色服务”-》 勾选“应用程序开发（已安装）”下“CGI"
 2.  将lib/site-packages/wfastcgi.py 复制至 项目文件下
@@ -37,6 +38,8 @@ pip install wfastcgi
 
 
 Sqlite3 数据库向MySQL迁移
+pip install mysqlclient
+
 1.在MYSQL建立空的数据库,mysite,  CREATE DATABASE mysite CHARACTER SET utf8 COLLATE utf8_general_ci; 
 2.先建立一个SLAVE数据库
 DATABASES = {
@@ -58,3 +61,4 @@ DATABASES = {
 4.将SQLITE主库的数据导出   python manage.py dumpdata > mysite_all_data.json
 5.切换主库和从库的setting.py设置，将MYSQL设置为主库，导入数据。
 python manage.py loaddata mysite_all_data.json
+
