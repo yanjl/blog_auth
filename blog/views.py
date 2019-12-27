@@ -1,3 +1,11 @@
+# Blog (c) by win10-pc
+#
+# Blog is licensed under a
+# Creative Commons Attribution 3.0 Unported License.
+#
+# You should have received a copy of the license along with this
+# work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.views.generic import CreateView, DetailView, ListView, TemplateView
@@ -22,6 +30,7 @@ class BlogList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['total'] = self.get_queryset().count
+
         return context
 
 

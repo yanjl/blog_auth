@@ -1,6 +1,14 @@
+# Blog (c) by yanjl
+#
+# Blog is licensed under a
+# Creative Commons Attribution 3.0 Unported License.
+#
+# You should have received a copy of the license along with this
+# work.  If not, see <http://creativecommons.org/licenses/by/3.0/>.
+
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 
 # Create your models here.

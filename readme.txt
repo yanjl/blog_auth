@@ -1,11 +1,11 @@
-Server2008 R2 sp1
+﻿Server2008 R2 sp1
 IIS7.0 
 pip install Django
 pip install wfastcgi
-pip install mysqlclient
+pip install mysqlclient pymysql
 
 1.  IIS，“添加角色服务”-》 勾选“应用程序开发（已安装）”下“CGI"
-2.  将lib/site-packages/wfastcgi.py 复制至 项目文件下
+2.  将lib/site-packages/wfastcgi.py 复制至 项目根目录文件夹下，如./mysite/下
 3.  将项目文件夹整个复制至“c\inetpub\wwwroot\"下
 4.  添加网站，设置内容物理路径，端口等，对开发端口，设置防火墙。
 5.  “处理程序映射”-> “添加模块映射”，
@@ -35,7 +35,33 @@ pip install mysqlclient
 7.   设置网站文件夹IIS用户访问权限。
 8.   启动网站
 
+------------------------------
+MSSQL:
+1、安装django-pyodbc-azure和pyodbc
 
+pip install django-pyodbc-azure pyodbc
+2、修改settings.py的DATABASES：
+
+复制代码
+DATABASES = {
+    'default': {
+         'ENGINE': 'sql_server.pyodbc',
+         'NAME': 'MyDB',
+         'USER': 'user',
+         'PASSWORD': 'password',
+         'HOST': '127.0.0.1',
+         'PORT': '',
+          'OPTIONS': {
+              'driver':'SQL Server Native Client 11.0',
+              'MARS_Connection': True,
+
+         },
+     },
+}
+
+# set this to False if you want to turn off pyodbc's connection pooling
+DATABASE_CONNECTION_POOLING = False
+---------------------------------
 
 Sqlite3 数据库向MySQL迁移
 pip install mysqlclient
